@@ -19,12 +19,12 @@ jobs:
         uses: android-actions/setup-android@v3
         with:
           packages: 'platforms;android-33 build-tools;33.0.0'
-      - name: Build APK
+      - name: Build APK (Debug) with stacktrace
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease
+          ./gradlew assembleDebug --stacktrace
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: telelenker-rider
-          path: app/build/outputs/apk/release/*.apk
+          name: telelenker-rider-debug
+          path: app/build/outputs/apk/debug/*.apk
